@@ -32,38 +32,6 @@
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 
-      <receiver
-        android:name="com.google.android.gms.gcm.GcmReceiver"
-        android:exported="true"
-        android:permission="com.google.android.c2dm.permission.SEND" >
-        <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="${applicationId}" />
-        </intent-filter>
-      </receiver>
-      <service android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationRegistrationService"/>
-      <service
-          android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService"
-          android:exported="false" >
-          <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-          </intent-filter>
-      </service>
-
-
-        <receiver
-            android:name="com.globo.reactnativeua.ReactNativeUAReceiver"
-            android:exported="false">
-
-            <intent-filter>
-                <action android:name="com.urbanairship.push.CHANNEL_UPDATED"/>
-                <action android:name="com.urbanairship.push.OPENED"/>
-                <action android:name="com.urbanairship.push.DISMISSED"/>
-                <action android:name="com.urbanairship.push.RECEIVED"/>
-
-                <category android:name="${applicationId}"/>
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
