@@ -3,11 +3,6 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <permission
-      android:name="${applicationId}.permission.C2D_MESSAGE"
-      android:protectionLevel="signature" />
-    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
@@ -16,7 +11,6 @@
         android:targetSdkVersion="22" />
 
     <application
-      android:name="SampleApp"
       android:allowBackup="true"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
@@ -31,7 +25,6 @@
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-
     </application>
 
 </manifest>

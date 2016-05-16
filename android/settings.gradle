@@ -1,5 +1,6 @@
 rootProject.name = 'SampleApp'
 
 include ':app'
-include ':react-native-ua'
-project(':react-native-ua').projectDir = file('../node_modules/react-native-ua/android')
+
+include ':react-native-ua' // include react-native-ua module
+project(':react-native-ua').projectDir = file('../node_modules/react-native-ua/android') // set react-native-ua module path
