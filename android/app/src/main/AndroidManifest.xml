@@ -15,6 +15,21 @@
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme">
+
+      <receiver
+          android:name="com.globo.reactnativeua.ReactNativeUAReceiver"
+          android:exported="false">
+
+          <intent-filter>
+              <action android:name="com.urbanairship.push.CHANNEL_UPDATED"/>
+              <action android:name="com.urbanairship.push.OPENED"/>
+              <action android:name="com.urbanairship.push.DISMISSED"/>
+              <action android:name="com.urbanairship.push.RECEIVED"/>
+
+              <category android:name="${applicationId}"/>
+          </intent-filter>
+      </receiver>
+
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

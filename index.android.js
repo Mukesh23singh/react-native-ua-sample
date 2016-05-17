@@ -68,7 +68,7 @@ class UrbanAirshipNotification extends Component {
 
   _handle_enable_notification (event) {
     ReactNativeUA.enable_notification();
-
+    alert("Notification enabled");
     ReactNativeUA.subscribe_to("receivedNotification", (notification) => {
       alert(notification.type + ": " + notification.data.aps.alert + " - " + notification.data.link)
     });
@@ -76,7 +76,7 @@ class UrbanAirshipNotification extends Component {
 
   _handle_disable_notification (event) {
     ReactNativeUA.disable_notification();
-
+    alert("Notification disabled");
     ReactNativeUA.unsubscribe_to("receivedNotification");
   }
 }
