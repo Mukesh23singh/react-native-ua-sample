@@ -17,6 +17,10 @@ class UrbanAirshipNotification extends Component {
   constructor(props) {
     super(props);
 
+    ReactNativeUA.subscribe_to("receivedNotification", (notification) => {
+      alert(notification.type + ": " + notification.data.aps.alert + " - " + notification.data.link)
+    });
+
     this.state = {
       show_add_tag_prompt: false,
       show_remove_tag_prompt: false
@@ -69,9 +73,6 @@ class UrbanAirshipNotification extends Component {
   _handle_enable_notification (event) {
     ReactNativeUA.enable_notification();
     alert("Notification enabled");
-    ReactNativeUA.subscribe_to("receivedNotification", (notification) => {
-      alert(notification.type + ": " + notification.data.aps.alert + " - " + notification.data.link)
-    });
   }
 
   _handle_disable_notification (event) {
