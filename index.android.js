@@ -17,7 +17,7 @@ class UrbanAirshipNotification extends Component {
   constructor(props) {
     super(props);
 
-    ReactNativeUA.subscribe_to("receivedNotification", (notification) => {
+    ReactNativeUA.on_notification("receivedNotification", (notification) => {
       alert(notification.type + ": " + notification.data.aps.alert + " - " + notification.data.link)
     });
 
