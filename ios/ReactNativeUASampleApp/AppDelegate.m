@@ -2,21 +2,19 @@
 
 #import "RCTRootView.h"
 
-#import "ReactNativeUAIOS.h" // --> Bridge Import
-
+#import "ReactNativeUAIOS.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [ReactNativeUAIOS setupUrbanAirship]; // --> Bridge Setup
+  [ReactNativeUAIOS setupUrbanAirship];
   
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"]; // --> Update with local IP
-
+  jsCodeLocation = [NSURL URLWithString:@"http://10.2.175.65:8081/index.ios.bundle?platform=ios&dev=true"];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"SampleApp"
+                                                      moduleName:@"ReactNativeUASampleApp"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
 

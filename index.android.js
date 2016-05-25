@@ -1,84 +1,40 @@
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  NativeModules
-} from 'react-native';
-
-import Button from 'react-native-button';
-import Prompt from 'react-native-prompt';
-
 import ReactNativeUA from 'react-native-ua';
 
-class UrbanAirshipNotification extends Component {
+import React, { Component } from 'react';
+
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+
+
+class ReactNativeUASampleApp extends Component {
 
   constructor(props) {
     super(props);
 
-    ReactNativeUA.on_notification((notification) => {
-      console.log(notification.data);
-      alert(notification.platform + " - " + notification.event + " : " + notification.alert);
-    });
+    ReactNativeUA.enable_notification();
 
-    this.state = {
-      show_add_tag_prompt: false,
-      show_remove_tag_prompt: false
-    };
+    ReactNativeUA.add_tag("react-native-ua-android");
+
+    ReactNativeUA.on_notification((notification) => {
+      console.log(notification.platform,
+                  notification.event,
+                  notification.alert,
+                  notification.data);
+
+      alert(notification.alert);
+    });
   }
 
-  render () {
-
+  render() {
     return (
       <View style={styles.container}>
-        <Button
-          style={styles.button}
-          onPress={this._handle_enable_notification}>Enable Notification</Button>
-
-        <Button
-          style={styles.button}
-          onPress={this._handle_disable_notification}>Disable Notification</Button>
-
-        <Button
-          style={styles.button}
-          onPress={() => this.setState({ show_add_tag_prompt: true })}>Add Tag</Button>
-
-        <Prompt
-          title="Add Tag"
-          placeholder="tag-example"
-          visible={ this.state.show_add_tag_prompt }
-          onCancel={ () => { this.setState({ show_add_tag_prompt: false }); }}
-          onSubmit={ (tag) => {
-            if (tag.length > 0) ReactNativeUA.add_tag(tag);
-            this.setState({ show_add_tag_prompt: false });
-            alert('Tag added!'); }}/>
-
-        <Button
-          style={styles.button}
-          onPress={() => this.setState({ show_remove_tag_prompt: true })}>Remove Tag</Button>
-
-        <Prompt
-          title="Remove Tag"
-          placeholder="tag-example"
-          visible={ this.state.show_remove_tag_prompt }
-          onCancel={ () => { this.setState({ show_remove_tag_prompt: false }); }}
-          onSubmit={ (tag) => {
-            if (tag.length > 0) ReactNativeUA.remove_tag(tag);
-            this.setState({ show_remove_tag_prompt: false });
-            alert('Tag removed!'); }}/>
+        <Text style={styles.welcome}>ReactNativeUA Android</Text>
       </View>
     );
-  }
-
-  _handle_enable_notification (event) {
-    ReactNativeUA.enable_notification();
-    alert("Notification enabled");
-  }
-
-  _handle_disable_notification (event) {
-    ReactNativeUA.disable_notification();
-    alert("Notification disabled");
   }
 }
 
@@ -87,18 +43,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
   },
-
-  button: {
-    borderColor: 'black',
-    padding: 10,
-    margin: 5,
-    borderRadius: 5,
-    borderWidth: 1,
-    fontSize: 27,
-    color: 'black'
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   }
 });
 
-AppRegistry.registerComponent('SampleApp', () => UrbanAirshipNotification);
+AppRegistry.registerComponent('ReactNativeUASampleApp', () => ReactNativeUASampleApp);

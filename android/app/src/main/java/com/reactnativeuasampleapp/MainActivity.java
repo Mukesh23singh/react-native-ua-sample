@@ -1,4 +1,4 @@
-package com.sampleandroidapp;
+package com.reactnativeuasampleapp;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactPackage;
@@ -7,17 +7,18 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.List;
 
-import com.globo.reactnativeua.ReactNativeUAPackage; // import react-native-ua package
+import com.globo.reactnativeua.ReactNativeUAPackage;
 
 
 public class MainActivity extends ReactActivity {
+
     /**
      * Returns the name of the main component registered from JavaScript.
      * This is used to schedule rendering of the component.
      */
     @Override
     protected String getMainComponentName() {
-        return "SampleApp";
+        return "ReactNativeUASampleApp";
     }
 
     /**
@@ -37,8 +38,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new ReactNativeUAPackage(this.getApplication()) // instantiate react-native-ua package
+                new ReactNativeUAPackage(this.getApplication())
         );
     }
-
 }
