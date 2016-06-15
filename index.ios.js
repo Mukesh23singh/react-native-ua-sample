@@ -18,6 +18,7 @@ class ReactNativeUASampleApp extends Component {
     ReactNativeUA.enable_notification();
 
     ReactNativeUA.add_tag("react-native-ua-ios");
+    ReactNativeUA.setNamedUserId("wild123");
 
     ReactNativeUA.on_notification((notification) => {
       console.log(notification.platform,
@@ -27,6 +28,11 @@ class ReactNativeUASampleApp extends Component {
 
       alert(notification.alert);
     });
+
+    ReactNativeUA.getNamedUserId((error, namedUserId) =>{
+      console.log(error, namedUserId);
+    });
+
   }
 
   render() {
