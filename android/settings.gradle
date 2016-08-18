@@ -1,6 +1,3 @@
-rootProject.name = 'ReactNativeUASampleApp'
+rootProject.name = 'ReactNativeUrbanAirshipSample'
 
 include ':app'
-include ':react-native-ua'
-
-project(':react-native-ua').projectDir = file('../node_modules/react-native-ua/android')
