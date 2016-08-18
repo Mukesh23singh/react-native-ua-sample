@@ -1,31 +1,57 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
+import ReactNativeUA from 'react-native-ua';
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
+
 class ReactNativeUrbanAirshipSample extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  _enableActionURL() {
+    ReactNativeUA.enable_action_url();
+  }
+
+  _disableActionURL () {
+    ReactNativeUA.disable_action_url();
+  }
+
   render() {
+
+    ReactNativeUA.enable_notification();
+    ReactNativeUA.enable_geolocation();
+    ReactNativeUA.handle_background_notification();
+    // ReactNativeUA.add_tag("tag-urban-react-native");
+    // ReactNativeUA.setNamedUserId("named-user");
+
+    // add handler to handle all incoming notifications
+    ReactNativeUA.on_notification((notification) => {
+        console.log('notification:',
+                    notification.url, // if action url is disabled
+                    notification.platform,
+                    notification.event,
+                    notification.alert,
+                    notification.data);
+
+        alert(notification.alert + " " + notification.url);
+    });
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <TouchableHighlight onPress={this._enableActionURL}>
+          <Text>Enable URL Action</Text>
+        </TouchableHighlight>
+
+        <TouchableHighlight onPress={this._disableActionURL}>
+          <Text>Disable URL Action</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -37,17 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
 
 AppRegistry.registerComponent('ReactNativeUrbanAirshipSample', () => ReactNativeUrbanAirshipSample);

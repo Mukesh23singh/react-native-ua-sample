@@ -1,6 +1,7 @@
 package com.reactnativeurbanairshipsample;
 
 import com.facebook.react.ReactActivity;
+import com.globo.reactnativeua.ReactNativeUAPackage;
 
 public class MainActivity extends ReactActivity {
 

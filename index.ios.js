@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import ReactNativeUA from 'react-native-ua';
 import React, { Component } from 'react';
 import {
@@ -35,7 +29,7 @@ class ReactNativeUrbanAirshipSample extends Component {
     ReactNativeUA.enable_geolocation();
     ReactNativeUA.handle_background_notification();
     ReactNativeUA.add_tag("tag-urban-react-native");
-    ReactNativeUA.setNamedUserId("arthur-evandro");
+    ReactNativeUA.setNamedUserId("named-user");
 
     // add handler to handle all incoming notifications
     ReactNativeUA.on_notification((notification) => {
@@ -69,17 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
 
 AppRegistry.registerComponent('ReactNativeUrbanAirshipSample', () => ReactNativeUrbanAirshipSample);
