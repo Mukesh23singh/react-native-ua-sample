@@ -17,11 +17,33 @@ class ReactNativeUASampleApp extends Component {
 
     ReactNativeUA.enable_notification();
 
-    ReactNativeUA.add_tag("react-native-ua-ios");
-    ReactNativeUA.setNamedUserId("wild123");
+    ReactNativeUA.enable_geolocation(); // prompt user to enable geolocation
 
+    ReactNativeUA.enable_action_url(); // enable url action
+
+    ReactNativeUA.handle_background_notification(); // handle notifications when app is in background
+
+    ReactNativeUA.add_tag('tag'); // set tag to the user
+
+    ReactNativeUA.set_named_user_id('user_id'); // set named user id
+
+    ReactNativeUA.set_quiet_time_enabled(true); // activate a quiet period
+
+    ReactNativeUA.set_quiet_time({
+      startHour: 22,
+      startMinute: 0,
+      endHour: 7,
+      endMinute: 0
+    }); // set the period to 22:00-07:00
+  }
+
+  componentWillMount() {
+
+    let e;
     ReactNativeUA.on_notification((notification) => {
-      console.log(notification.platform,
+      console.log('notification:',
+                  notification.url, // if action url is disabled
+                  notification.platform,
                   notification.event,
                   notification.alert,
                   notification.data);
@@ -29,33 +51,26 @@ class ReactNativeUASampleApp extends Component {
       alert(notification.alert);
     });
 
-    ReactNativeUA.getNamedUserId((error, namedUserId) =>{
-      console.log(error, namedUserId);
+    // Check if user enabled notifications
+    ReactNativeUA.are_notifications_enabled().then(enabled => {
+      console.log('notifications enabled:', enabled);
+      if (enabled) {
+        ReactNativeUA.get_channel_id().then(channelId => {
+          console.log('channel id:', channelId);
+        });
+      }
     });
 
+    // Get channel id for device
   }
 
-  render() {
+  render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>ReactNativeUA iOS</Text>
+      <View>
+        <Text>ReactNativeUA</Text>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  }
-});
 
 AppRegistry.registerComponent('ReactNativeUASampleApp', () => ReactNativeUASampleApp);
