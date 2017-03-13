@@ -6,10 +6,10 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react": "^15.1",
-    "react-native": "^0.27",
-    "react-native-button": "^1.5",
-    "react-native-prompt": "^0.18",
-    "react-native-ua": "*"
+    "react": "15.4.2",
+    "react-native": "0.41.2",
+    "react-native-button": "1.5",
+    "react-native-prompt": "0.18",
+    "react-native-ua": "git://github.com/danielbarboza/react-native-ua.git#feature\/change_reactnative_headers"
   }
 }
